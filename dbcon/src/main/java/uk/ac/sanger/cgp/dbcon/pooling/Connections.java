@@ -30,7 +30,6 @@ import java.sql.Connection;
 import java.util.Iterator;
 
 import uk.ac.sanger.cgp.dbcon.config.Config;
-import uk.ac.sanger.cgp.dbcon.exceptions.ConnectionNotAvailableException;
 import uk.ac.sanger.cgp.dbcon.exceptions.PoolingException;
 import uk.ac.sanger.cgp.dbcon.util.DatabaseUtils;
 
