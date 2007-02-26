@@ -1,0 +1,19 @@
+#summary Details on the usage of SQL Libraries
+#labels Phase-Implementation
+
+= Introduction =
+
+TODO
+
+
+= SQL library formats =
+
+TODO
+
+
+= Usage in code =
+
+TODO
+
+
+= How the facade fits in =
