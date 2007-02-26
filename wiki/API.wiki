@@ -2,3 +2,5 @@
 #labels Phase-Implementation
 
 [http://www.sanger.ac.uk/genetics/CGP/Software/DbCon/javadoc/ DbCon API version 5.0] (Hosted at Sanger Institute)
+
+Also available from the Downloads section on this page. Javadoc is distributed as a JAR file as this is easier for Maven to generate than an assembly.
