@@ -1,0 +1,5 @@
+#summary A description of metadata issues which currently affect Oracle's JDBC implementation
+
+= Date & Timestamp Confusion =
+
+Oracle's handling of DATE & TIMESTAMP SQL standards has always been slightly out of sync with the official specifications. 
