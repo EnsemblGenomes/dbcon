@@ -1,5 +1,29 @@
 #summary A description of metadata issues which currently affect Oracle's JDBC implementation
+#labels Phase-Deploy
 
 = Date & Timestamp Confusion =
 
-Oracle's handling of DATE & TIMESTAMP SQL standards has always been slightly out of sync with the official specifications. 
+Oracle's handling of DATE & TIMESTAMP SQL standards has always been slightly out of sync with the official specifications. The DATE type in Oracle has mapped to a second precision causing design decision problems when creating tables. This is never seen at design time but when we start to interact with the table using JDBC. As a pose to Oracle JDBC's specification about {{{java.sql.Date}}} and {{{java.sql.Timestamp}}} measure to midnight of the given day & to nanos respectivly. 
+
+This is easily solved when interacting with ResultSets directly (whenever you ask for date, you actually mean timestamp) but there is a mismatch in the metadata associated with the result set. Below is a table of querying Oracle for this information (in conjunction with JDBC). The query used
+
+{{{select X from dual}}} where X was the item specified in requested column.
+
+The ones where fix applied is yes means that the system property *oracle.jdbc.V8Compatible* was set to true.
+
+||Requested type||Requested Column||getMetaData().getColumnClassName()||getObject(1).getClass()||Fix Applied||
+||DATE||sysdate||java.sql.Timestamp||java.sql.Date||NO||
+||TIMESTAMP||systimespamp||oracle.sql.TIMESTAMPZ||oracle.sql.TIMESTAMPZ||NO||
+||DATE||sysdate||java.sql.Timestamp||java.sql.Timestamp||YES||
+||TIMESTAMP||systimestamp||oracle.sql.TIMESTAMPZ||oracle.sql.TIMESTAMPZ||YES||
+
+As can be seen the Oracle driver reports that we expect to see a Timestamp object when querying for a date field but the actual implementation is a Date (remember that these objects inherit from java.util.Date and neither one extends from the other). If we are replying on the metadata to accurately describe the extracted Object (maybe we are going to put this information in a List which has been passed through {{{Collections.checkedList()}}}) this will cause errors to appear.
+
+= How does DbCon solve this =
+
+Currently it explicitly sets this system property to true whenever it encounters a version 10 JDBC driver. DbCon will also raise an exception when it encounters a version 11 JDBC driver since it is unknown if Oracle will have fixed this bug (currently it is described as a feature). New versions of DbCon will be released as & when required to continue supporting this feature.
+
+= More Information =
+
+  * [http://forums.oracle.com/forums/thread.jspa?threadID=191488&start=15&tstart=0]
+  * [http://forums.oracle.com/forums/thread.jspa?messageID=1659839]
