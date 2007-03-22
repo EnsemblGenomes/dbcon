@@ -1,5 +1,5 @@
 #summary How the XML format is structured and things to be aware of
-#labels Phase-Implementation,Phase-Support
+#labels Phase-Implementation,Phase-Support,Featured
 
 = Example Format =
 
