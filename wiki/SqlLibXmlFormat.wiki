@@ -1,0 +1,34 @@
+#summary How the XML format is structured and things to be aware of
+#labels Phase-Implementation,Phase-Support
+
+= Example Format =
+
+{{{
+<?xml version="1.0" encoding="UTF-8"?>
+
+<sqllib>
+  <sql name="nameInHere">
+    select 1 from dual
+  </sql>
+
+  <sql name="anotherName">
+  <![CDATA[
+    select 'a' from dual
+  ]]>
+  </sql>
+</sqllib>
+}}}
+
+= Why use CDATA =
+
+XML defines a number of reserved keywords including:
+  * '
+  * "
+  * &
+  * <
+  * >
+
+In SQL (especially Oracle) we will use ', <> in order to delimit VARCHARS and to perform not equals operations (in Oracle != is synonymous with <>). Using the CDATA tag as seen in the SQL _anotherName_ tells any XML parser to take this text as being literal. 
+
+= Why no XSD or DTD =
+It's a very simple format and one which does not require any complicated XSD definitions. If the format is extended then this might trigger a need for a schema.
