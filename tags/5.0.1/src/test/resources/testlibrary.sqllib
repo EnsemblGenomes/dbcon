@@ -1,0 +1,89 @@
+
+<SQL-NAME>
+test
+</SQL-NAME>
+<SQL>
+select sysdate from dual
+</SQL>
+
+<SQL-NAME>
+allUpperCase
+</SQL-NAME>
+<SQL>
+allUpperCase
+</SQL>
+
+<sql-name>
+allLowerCase
+</sql-name>
+<sql>
+allLowerCase
+</sql>
+
+<sql-name>
+mixedCase
+</sql-NAME>
+<sQl>
+mixedCase
+</SqL>
+
+//<sql-name>
+//comments.slash
+//</sql-name>
+//<sql>
+//select 
+//i should not see this
+//dbcon 
+//from other
+//</sql>
+
+<sql-name>
+comments.dash
+</sql-name>
+<sql>
+select dbcon
+--from test
+from other
+</sql>
+
+<sql-name>
+comments.starComment
+</sql-name>
+<sql>
+select 
+dbcon /*this is bogus*/ 
+from /*
+and now for
+the multiline comment
+*/
+other
+</sql>
+
+<sql-name>
+comments.ruleComment
+</sql-name>
+<sql>
+select /*+ rule*/ dbcon
+from other
+</sql>
+
+<sql-name>
+placeholder
+</sql-name>
+<sql>
+select {0} from dual
+</sql>
+
+<sql-name>
+aposStripping
+</sql-name>
+<sql>
+select 'Y' from dual
+</sql>
+
+<sql-name>
+aposStrippingAndPlaceholder
+</sql-name>
+<sql>
+select 'Y', {0} from dual
+</sql>

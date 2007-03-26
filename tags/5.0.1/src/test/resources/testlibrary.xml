@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<sqllib>
+	
+	<sql name="test">
+		select sysdate from dual
+	</sql>
+	
+	<sql name="comments.dash">
+		select dbcon
+		--from test
+		from other
+	</sql>
+	
+	<sql name="comments.starComment">
+		select 
+		dbcon /*this is bogus*/ 
+		from /*
+		and now for
+		the multiline comment
+		*/
+		other
+	</sql>
+	
+	<sql name="comments.ruleComment">
+		select /*+ rule*/ dbcon
+		from other
+	</sql>
+	
+	<sql name="placeholder">
+		select {0} from dual
+	</sql>
+	
+	<sql name="aposStripping">
+		select 'Y' from dual
+	</sql>
+	
+	<sql name="aposStrippingAndPlaceholder">
+		select 'Y', {0} from dual
+	</sql>
+</sqllib>
