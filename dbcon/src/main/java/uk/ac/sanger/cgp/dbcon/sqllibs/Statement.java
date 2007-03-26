@@ -28,6 +28,8 @@ package uk.ac.sanger.cgp.dbcon.sqllibs;
 
 import java.text.MessageFormat;
 
+import uk.ac.sanger.cgp.dbcon.util.BasicTemplater;
+
 /**
  * Holds SQL Statements but this has been done this way to allow extensions to
  * the library language if needed.
@@ -116,11 +118,14 @@ public class Statement implements java.io.Serializable {
    */
   public String getStatement(Object[] params) {
     String rawStatement = getStatement();
-    String[] stringParams = new String[params.length];
-    for(int i=0; i<params.length; i++) {
-      stringParams[i] = params[i].toString();
+    String outputStatement = null;
+    if(params != null && params.length == 0) {
+    	outputStatement = rawStatement;
     }
-    return MessageFormat.format(rawStatement, stringParams);
+    else {
+	    outputStatement = BasicTemplater.template(rawStatement, params);
+    }
+    return outputStatement;
   }
 
   /**

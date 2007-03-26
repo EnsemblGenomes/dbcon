@@ -73,3 +73,17 @@ placeholder
 <sql>
 select {0} from dual
 </sql>
+
+<sql-name>
+aposStripping
+</sql-name>
+<sql>
+select 'Y' from dual
+</sql>
+
+<sql-name>
+aposStrippingAndPlaceholder
+</sql-name>
+<sql>
+select 'Y', {0} from dual
+</sql>

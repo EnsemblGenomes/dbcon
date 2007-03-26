@@ -85,4 +85,14 @@ public class LibraryAbstractTestCase extends TestCase {
     String subsQuery = getLib().getQuery("placeholder", new Object[]{new Integer(99999)});
     assertEquals("Placeholder was not present", "select 99999 from dual ", subsQuery);
   }
+  
+  public void testAposStripping() {
+  	String query = getLib().getQuery("aposStripping", new Object[0]);
+  	assertEquals("Query was not as expected. ' were stripped", "select 'Y' from dual ", query);
+  }
+  
+  public void testAposStrippingAndPlaceholder() {
+  	String query = getLib().getQuery("aposStrippingAndPlaceholder", new Object[]{"1"});
+  	assertEquals("Query was not templated as expected", "select 'Y', 1 from dual ", query);
+  }
 }

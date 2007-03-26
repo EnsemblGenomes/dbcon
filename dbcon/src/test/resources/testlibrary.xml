@@ -31,4 +31,11 @@
 		select {0} from dual
 	</sql>
 	
+	<sql name="aposStripping">
+		select 'Y' from dual
+	</sql>
+	
+	<sql name="aposStrippingAndPlaceholder">
+		select 'Y', {0} from dual
+	</sql>
 </sqllib>
