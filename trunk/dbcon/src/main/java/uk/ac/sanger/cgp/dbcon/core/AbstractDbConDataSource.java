@@ -45,20 +45,20 @@ import uk.ac.sanger.cgp.dbcon.util.DatabaseUtils;
  * Used as a default implementation of the data source object which uses the
  * AbstractPools objects to retrieve pools and their connections from the given
  * synonym specified through construction.
- * 
+ *
  * <p>
  * This is a thin wrapper around the DBCP DataSource object which is linked to
  * the shared connection pool. Be aware that <strong>ALL</strong> Connections
  * retrived from this object <strong>MUST</strong> be closed otherwise you will
  * have impacts on other systems with locking out connections and causing the pool
  * to be filled.
- * 
+ *
  * @author andrewyates
  * @author $Author$
  * @version $Revision$
  * @see <a href="http://jakarta.apache.org/commons/dbcp/apidocs/org/apache/commons/dbcp/package-summary.html">DBCP DataSources</a>
  */
-public abstract class AbstractDbConDataSource {
+public abstract class AbstractDbConDataSource implements DataSource {
 
   private Log log = LogFactory.getLog(this.getClass());
 
@@ -150,7 +150,7 @@ public abstract class AbstractDbConDataSource {
    * Wrapper to extract the DataSource for the specified named pool. This
    * happens every single time to maintain updates with the potentially ever
    * changing
-   * 
+   *
    */
   protected DataSource getDataSource() throws SQLException {
     return getUnderlyingPool().getDataSource();
@@ -164,7 +164,7 @@ public abstract class AbstractDbConDataSource {
 
   /**
    * Finds the pool which is represented by the synonym given by this Object
-   * 
+   *
    * @throws SQLException
    *           If any DbConException is detected. This is logged here and
    *           re-thrown with information but no nesting since SQLException does
