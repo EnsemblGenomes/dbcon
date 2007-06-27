@@ -8,7 +8,7 @@
   <inceptionYear>2006</inceptionYear>
   <url>http://code.google.com/p/dbcon/</url>
 
-  <version>5.0.1</version>
+  <version>5.0.2</version>
   
   <description>A set of related database libraries. Provides methods for pooling database 
   	connections and for externalising SQL into XML/custom files.
