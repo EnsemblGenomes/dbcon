@@ -8,11 +8,10 @@
   <inceptionYear>2006</inceptionYear>
   <url>http://code.google.com/p/dbcon/</url>
 
-  <version>5.0.2</version>
+  <version>6.0.0</version>
   
   <description>A set of related database libraries. Provides methods for pooling database 
-  	connections and for externalising SQL into XML/custom files.
-  </description>
+  	connections and for externalising SQL into XML/custom files.</description>
   	
   <issueManagement>
     <system>Google Project Hosting</system>
@@ -20,16 +19,27 @@
   </issueManagement>
   
   <scm>
-    <connection>scm:svn:https://dbcon.googlecode.com/svn/trunk/dbcon</connection>
-    <url>http://dbcon.googlecode.com/svn/trunk/dbcon</url>
+    <connection>scm:svn:https://dbcon.googlecode.com/svn/branches/dbcon_1_6</connection>
+    <url>http://dbcon.googlecode.com/svn/branches/dbcon_1_6</url>
   </scm>
   
   <developers>
     <developer>
       <id>andyyatz</id>
       <name>Andrew Yates</name>
-      <organisation>European Bioinformatics Institute</organisation>
+      <organization>European Bioinformatics Institute</organization>
       <organizationUrl>http://www.ebi.ac.uk</organizationUrl>
+      <roles>
+        <role>Project Admin</role>
+        <role>Developer</role>
+      </roles>
+      <timezone>0</timezone>
+    </developer>
+    <developer>
+      <id>davidjones.1980</id>
+      <name>David Jones</name>
+      <organization>Wellcome Trust Sanger Institute</organization>
+      <organizationUrl>http://www.sanger.ac.uk</organizationUrl>
       <roles>
         <role>Project Admin</role>
         <role>Developer</role>
@@ -54,8 +64,8 @@
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
         <configuration>
-          <source>1.4</source>
-          <target>1.4</target>
+          <source>1.6</source>
+          <target>1.6</target>
           <debug>true</debug>
         </configuration>
       </plugin>
@@ -236,7 +246,7 @@
           <linkXref>true</linkXref>
           <sourceEncoding>utf-8</sourceEncoding>
           <minimumTokens>40</minimumTokens>
-          <targetJdk>1.4</targetJdk>
+          <targetJdk>1.6</targetJdk>
         </configuration>
       </plugin>
 
@@ -245,7 +255,7 @@
         <artifactId>maven-javadoc-plugin</artifactId>
         <configuration>
           <links>
-            <link>http://java.sun.com/j2se/1.4.2/docs/api</link>
+            <link>http://java.sun.com/javase/6/docs/api/</link>
             <link>http://jakarta.apache.org/commons/lang/api-release</link>
             <link>http://jakarta.apache.org/commons/io/api-release</link>
             <link>http://jakarta.apache.org/commons/logging/apidocs</link>
@@ -268,4 +278,8 @@
       
     </plugins>
   </reporting>
+    
+  <properties>
+        <netbeans.hint.useExternalMaven>true</netbeans.hint.useExternalMaven>
+    </properties>
 </project>
