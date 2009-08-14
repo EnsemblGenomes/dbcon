@@ -79,6 +79,7 @@ public abstract class AbstractDbConDataSource implements DataSource {
   /**
    * Throws UnsupportedOperationException.
    */
+    @Override
   public void setLoginTimeout(int seconds) throws SQLException {
     getDataSource().setLoginTimeout(seconds);
   }
@@ -93,6 +94,7 @@ public abstract class AbstractDbConDataSource implements DataSource {
   /**
    * Runs a basic toString
    */
+  @Override
   public String toString() {
     String retValue;
     retValue = super.toString();
@@ -103,6 +105,7 @@ public abstract class AbstractDbConDataSource implements DataSource {
   /**
    * Throws UnsupportedOperationException.
    */
+  @Override
   public int getLoginTimeout() throws SQLException {
     return getDataSource().getLoginTimeout();
   }
@@ -110,6 +113,7 @@ public abstract class AbstractDbConDataSource implements DataSource {
   /**
    * Wrapper around the underlying DataSource's method
    */
+    @Override
   public PrintWriter getLogWriter() throws SQLException {
     return getDataSource().getLogWriter();
   }
@@ -120,6 +124,7 @@ public abstract class AbstractDbConDataSource implements DataSource {
    * {@link DatabaseUtils#connectionSettings(Connection)} Throws
    * UnsupportedOperationException.
    */
+    @Override
   public Connection getConnection(String username, String password)
       throws SQLException {
     Connection conn = getDataSource().getConnection(username, password);
@@ -132,6 +137,7 @@ public abstract class AbstractDbConDataSource implements DataSource {
    * password specified at creation. Applies the settings specified by
    * {@link DatabaseUtils#connectionSettings(Connection)}
    */
+    @Override
   public Connection getConnection() throws SQLException {
     Connection conn = getDataSource().getConnection();
     DatabaseUtils.connectionSettings(conn);
@@ -196,6 +202,7 @@ public abstract class AbstractDbConDataSource implements DataSource {
    * instance underlying the pools here so two hashcodes from the same synonym
    * should be equal.
    */
+    @Override
   public boolean equals(Object obj) {
     boolean equality = false;
 
@@ -219,6 +226,7 @@ public abstract class AbstractDbConDataSource implements DataSource {
    * get the hashcode as we hold only one instance underlying the pools here so
    * two hashcodes from the same synonym should be equal.
    */
+    @Override
   public int hashCode() {
 
     int hashCodeReturn = 0;
@@ -235,6 +243,22 @@ public abstract class AbstractDbConDataSource implements DataSource {
     }
 
     return hashCodeReturn;
+  }
+  
+  /**
+   * {@inheritDoc }
+   * @return false always.
+   */
+  public boolean isWrapperFor(Class<?> iface) throws SQLException{
+      return false;
+  }
+  
+  /**
+   * {@inheritDoc }
+   * @throws {@link java.sql.SQLException} always.
+   */
+  public <T> T unwrap(Class<T> iface) throws SQLException{
+      throw new SQLException("This is not a wrapper.");
   }
 
 }
