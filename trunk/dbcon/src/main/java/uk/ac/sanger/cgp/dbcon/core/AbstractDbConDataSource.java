@@ -75,6 +75,16 @@ public abstract class AbstractDbConDataSource implements DataSource {
   protected Log getLog() {
     return log;
   }
+  
+  @Override
+  public boolean isWrapperFor(Class<?> iface) {
+    return getClass().isAssignableFrom(iface);
+  }
+
+  @Override
+  public <T> T unwrap(Class<T> iface) {
+    return (T)this;
+  }
 
   /**
    * Throws UnsupportedOperationException.

@@ -103,11 +103,11 @@ public class BasicTemplater {
 	 */
 	public void addParams(Object[] params) {
 		int offset = this.params.size();
-		for(int i =0; i<params.length; i++) {
-			offset = offset + i;
+		for(int i = 0; i<params.length; i++) {
 			String offsetString = Integer.toString(offset);
 			Object value = params[i];
 			addParam(offsetString, value);
+			offset++;
 		}
 	}
 	
