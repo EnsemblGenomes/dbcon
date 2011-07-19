@@ -8,7 +8,7 @@
   <inceptionYear>2006</inceptionYear>
   <url>http://code.google.com/p/dbcon/</url>
 
-  <version>5.0.2</version>
+  <version>6.0.0</version>
   
   <description>A set of related database libraries. Provides methods for pooling database 
   	connections and for externalising SQL into XML/custom files.
@@ -54,8 +54,8 @@
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
         <configuration>
-          <source>1.4</source>
-          <target>1.4</target>
+          <source>1.6</source>
+          <target>1.6</target>
           <debug>true</debug>
         </configuration>
       </plugin>
@@ -76,6 +76,31 @@
           <descriptor>src/main/assembly/distro.xml</descriptor>
           <outputDirectory>target/dist</outputDirectory>
         </configuration>
+      </plugin>
+      
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-source-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>attach-sources</id>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>attach-javadocs</id>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
       </plugin>
       
     </plugins>
@@ -145,7 +170,7 @@
     <dependency>
       <groupId>xom</groupId>
       <artifactId>xom</artifactId>
-      <version>1.1</version>
+      <version>1.2.5</version>
       <scope>compile</scope>
       <optional>true</optional>
       	<exclusions>
@@ -207,7 +232,7 @@
     <dependency>
       <groupId>hsqldb</groupId>
       <artifactId>hsqldb</artifactId>
-      <version>1.8.0.7</version>
+      <version>1.8.0.10</version>
       <scope>test</scope>
     </dependency>
 
